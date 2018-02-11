@@ -35,9 +35,9 @@ class App extends Component {
     return (
       <div>
         <div>{this.state.greeting}</div>
-        <input type="text" 
+        <input type="text"
                onChange={this.onChange}
-               placeholder='Enter your name'/>
+               placeholder='Enter your name, please'/>
         <button onClick={this.onSubmit}>
           submit
         </button>
