@@ -1,4 +1,4 @@
 export default {
-  apiServerAddress: 'http://localhost:8090/gs-guide-websocket',
+  apiServerAddress: 'http://localhost:8090/kma-auction',
   timeBeforeRequest: 500
 }

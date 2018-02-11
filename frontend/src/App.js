@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import SockJS from 'sockjs-client';
 import Stomp from 'stompjs';
+import config from './config'
 
 class App extends Component {
   state = {
@@ -10,7 +11,7 @@ class App extends Component {
   }
 
   componentDidMount(){
-    var socket = new SockJS('http://localhost:8090/kma-auction');
+    var socket = new SockJS(config.apiServerAddress);
     this.stompClient = Stomp.over(socket);
     this.stompClient.connect({}, (frame) => {
         // setConnected(true);
