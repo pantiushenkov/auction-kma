@@ -9,7 +9,7 @@ public class Lot {
     @Size(min = 8, max = 10)
     private String id;
 
-    private List<Entry> entries;
+    private List<Entry> entries; // entries made on this lot
 
     public Lot() {
     }

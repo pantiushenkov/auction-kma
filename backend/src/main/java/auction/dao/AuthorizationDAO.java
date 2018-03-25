@@ -1,6 +1,8 @@
-package auction.model;
+package auction.dao;
 
-public interface AuthorizationInterface {
+import auction.model.User;
+
+public interface AuthorizationDAO {
     User logIn(String email, String password);
     User signUp(String name, String description, String email, String password);
     User forgotPassword(String email);

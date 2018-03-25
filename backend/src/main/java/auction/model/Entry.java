@@ -6,6 +6,10 @@ import javax.validation.constraints.Min;
 
 public class Entry {
     @NotNull
+    @Min(value = 0)
+    private int id; // entry id
+
+    @NotNull
     @Size(min = 8, max = 10)
     private String lotId; // on which lot the entry was made
 
@@ -17,17 +21,27 @@ public class Entry {
     @Min(value = 0)
     private int price; // in uah
 
+    @Size(max = 200)
     private String comment; // user's comment on the entry
 
     public Entry() {
 
     }
 
-    public Entry(String lotId, String userId, int price, String comment) {
+    public Entry(int id, String lotId, String userId, int price, String comment) {
+        this.id = id;
         this.lotId = lotId;
         this.userId = userId;
         this.price = price;
         this.comment = comment;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.price = id;
     }
 
     public String getLotId() {

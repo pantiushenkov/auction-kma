@@ -18,10 +18,11 @@ public class User {
     @Size(max = 400)
     private String description; // description, which will be shown on own lot and (?) on profile
 
-    private List<Entry> entries;
+    private List<Entry> entries; // entries made by this user on other lots
 
     private Lot myLot; // this user as a lot on auction
 
+    @NotNull
     private boolean isAdmin; // is this user an admin
 
     // @Size(min = 8, max = 20)
