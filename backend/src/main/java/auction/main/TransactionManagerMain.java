@@ -5,6 +5,9 @@ import auction.service.EntryManager;
 import auction.service.impl.EntryManagerImpl;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TransactionManagerMain {
 
     public static void main(String[] args) {
@@ -14,18 +17,17 @@ public class TransactionManagerMain {
         EntryManager entryManager = ctx.getBean("entryManager",
                 EntryManagerImpl.class);
 
-        Entry entr = createDummyEntry();
-        entryManager.createEntry(entr);
+        Entry myentry = new Entry("kmalot01","kmauser2",100,"");
+        Entry myentry1 = new Entry("kmalot01","kmauser2",120,"");
+
+        List<Entry> myentries = new ArrayList<Entry>();
+        myentries.add(myentry);
+        myentries.add(myentry1);
+
+        entryManager.createEntries(myentries);
 
         ctx.close();
     }
 
-    private static Entry createDummyEntry() {
-        Entry entry = new Entry();
-        entry.setId(2);
-        entry.setLotId("kmalot01");
-        entry.setUserId("kmauser2");
-        entry.setPrice(50);
-        return entry;
-    }
+
 }

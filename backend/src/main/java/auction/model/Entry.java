@@ -1,12 +1,16 @@
 package auction.model;
 
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.validation.constraints.Min;
 
+@Entity
+@Table(name="entry")
 public class Entry {
-    @NotNull
-    @Min(value = 0)
+    @Id
+    @GeneratedValue
+    @Column(name="id")
     private int id; // entry id
 
     @NotNull
@@ -28,8 +32,7 @@ public class Entry {
 
     }
 
-    public Entry(int id, String lotId, String userId, int price, String comment) {
-        this.id = id;
+    public Entry(String lotId, String userId, int price, String comment) {
         this.lotId = lotId;
         this.userId = userId;
         this.price = price;
@@ -41,7 +44,7 @@ public class Entry {
     }
 
     public void setId(int id) {
-        this.price = id;
+        this.id = id;
     }
 
     public String getLotId() {
