@@ -1,29 +1,29 @@
-import React from 'react';
-import {render} from 'react-dom';
+/* eslint-disable import/default,global-require */
+
+import React from 'react'
+import { render } from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
-import configureStore from './store/configureStore'
+import configureStore, { history } from './store/ConfigureStore'
+import { Root } from './root'
+import './styles/styles.scss'
 
 const store = configureStore()
-render(
-    <AppContainer>
-      <App store={store}/>
-    </AppContainer>,
-    document.getElementById('root')
-  )
-  
-  if (module.hot) {
-    module.hot.accept('./App', () => {
-      const NewRoot = require('./App').default
-      render(
-        <AppContainer>
-          <NewRoot store={store}/>
-        </AppContainer>,
-        document.getElementById('root')
-      )
-    })
-  }
 
-registerServiceWorker();
+render(
+  <AppContainer>
+    <Root store={store} history={history} />
+  </AppContainer>,
+  document.getElementById('app'),
+)
+
+if (module.hot) {
+  module.hot.accept('./root', () => {
+    const NewRoot = require('./root').default
+    render(
+      <AppContainer>
+        <NewRoot store={store} history={history} />
+      </AppContainer>,
+      document.getElementById('app'),
+    )
+  })
+}

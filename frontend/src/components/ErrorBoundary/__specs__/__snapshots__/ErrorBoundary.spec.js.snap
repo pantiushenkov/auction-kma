@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ErrorBoundary /> should render Sorry, error occured 1`] = `
+<div>
+  Sorry, error occured: 
+</div>
+`;
+
+exports[`<ErrorBoundary /> should render this.props.children 1`] = `
+<div>
+  Test
+</div>
+`;
