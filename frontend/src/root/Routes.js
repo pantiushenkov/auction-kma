@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { WithAuth } from './Auth'
 
-export class Routes extends Component {
+export class RoutesBase extends Component {
   shouldComponentUpdate(nextProps) {
     const {
       session: { isLoggedIn: nextLoggedIn },
@@ -26,7 +26,7 @@ export class Routes extends Component {
   }
 }
 
-export default withRouter(connect(
+export const Routes = withRouter(connect(
   state => ({
     session: state.session,
     routing: state.routing,
@@ -34,4 +34,4 @@ export default withRouter(connect(
   dispatch => ({
     push: bindActionCreators(push, dispatch),
   }),
-)(Routes))
+)(RoutesBase))

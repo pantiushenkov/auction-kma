@@ -1,7 +1,7 @@
 import React from 'react'
 import { connectedRouterRedirect } from 'redux-auth-wrapper/history4/redirect'
 import locationHelperBuilder from 'redux-auth-wrapper/history4/locationHelper'
-import ErrorBoundary from '../components/ErrorBoundary'
+import ErrorBoundary from '../Components/ErrorBoundary'
 
 const locationHelper = locationHelperBuilder({})
 
