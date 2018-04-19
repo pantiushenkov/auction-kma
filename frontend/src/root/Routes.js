@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { Switch, Route, withRouter } from 'react-router-dom'
+import { Switch, Route, BrowserRouter } from 'react-router-dom'
 import { push } from 'react-router-redux'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { WithAuth } from './Auth'
+
+// import { WithAuth } from './Auth'
 
 export class RoutesBase extends Component {
   shouldComponentUpdate(nextProps) {
@@ -18,15 +19,16 @@ export class RoutesBase extends Component {
 
   render() {
     return (
-      <Switch>
-        <Route exact path="/" /> {/* TODO component={userIsNotAuthenticated(SignIn)} */}
-        <WithAuth />
-      </Switch>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" /> {/* TODO component={userIsNotAuthenticated(SignIn)} */} {/* <WithAuth /> */}
+        </Switch>
+      </BrowserRouter>
     )
   }
 }
 
-export const Routes = withRouter(connect(
+export const Routes = connect(
   state => ({
     session: state.session,
     routing: state.routing,
@@ -34,4 +36,4 @@ export const Routes = withRouter(connect(
   dispatch => ({
     push: bindActionCreators(push, dispatch),
   }),
-)(RoutesBase))
+)(RoutesBase)
