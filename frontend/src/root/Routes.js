@@ -3,6 +3,7 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom'
 import { push } from 'react-router-redux'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { Home } from '../Screens/Home'
 
 // import { WithAuth } from './Auth'
 
@@ -21,7 +22,7 @@ export class RoutesBase extends Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" /> {/* TODO component={userIsNotAuthenticated(SignIn)} */} {/* <WithAuth /> */}
+          <Route exact path="/" component={Home} /> {/* TODO component={userIsNotAuthenticated(SignIn)} */} {/* <WithAuth /> */}
         </Switch>
       </BrowserRouter>
     )
