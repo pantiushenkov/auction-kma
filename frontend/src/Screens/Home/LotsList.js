@@ -1,8 +1,11 @@
 import React from 'react'
+import { connect } from 'react-redux'
+
 import { Lot } from './Lot'
 
-export class LotsList extends React.Component {
+export class LotsListBase extends React.Component {
   render() {
+    const { users } = this.props
     return (
       <div className="simblaEL containerHolder" data-drag="P21" id="P21" style={{ position: 'relative' }}>
         <div
@@ -52,9 +55,9 @@ export class LotsList extends React.Component {
                 </div>
               </div>
               <div className="row simblaEL rDivider" data-drag="P29" id="P29" style={{ position: 'relative' }} data-title="Row">
-                <Lot />
-                <Lot />
-                <Lot />
+                {users && users.map(user => (
+                  <Lot user={user} key={user.name} />
+                ))}
               </div>
             </div>
           </div>
@@ -63,3 +66,7 @@ export class LotsList extends React.Component {
     )
   }
 }
+
+export const LotsList = connect(({ users }) => (
+  { users }
+))(LotsListBase)

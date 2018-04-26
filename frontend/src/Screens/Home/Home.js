@@ -1,9 +1,31 @@
 import React from 'react'
+import SockJS from 'sockjs-client'
+import Stomp from 'stompjs'
+import config from '../../config'
 
-import './Home.css'
 import { LotsList } from './LotsList'
+import './Home.css'
 
 export class Home extends React.Component {
+  componentDidMount() {
+    const socket = new SockJS(config.apiServerAddress)
+    this.stompClient = Stomp.over(socket)
+    this.stompClient.connect({}, () => {
+      console.log('connected')
+      // setConnected(true);
+      // console.log('Connected: ' + frame);
+      this.stompClient.subscribe('/login', (greeting) => {
+        const content = JSON.parse(greeting.body)
+        console.log(content)
+        // this.setState({ greeting: content })
+      })
+    })
+  }
+
+  onSubmit = () => {
+    this.stompClient.send('/login')
+  }
+
   render() {
     return (
       <div
@@ -12,7 +34,6 @@ export class Home extends React.Component {
         id="P12"
         style={{
           position: 'relative',
-          marginTop: -6,
         }}
         data-title="Row"
       >
@@ -66,7 +87,7 @@ export class Home extends React.Component {
                       <div className="simblaEL tcH" data-drag="P18" id="P18">
                         <div className="textContainer H1" style={{ cursor: 'text' }}>
                           <h1>
-                            <div style={{ textAlign: 'center' }}>Make a bid</div>
+                            <div style={{ textAlign: 'center' }} onClick={this.onSubmit}>Make a bid</div>
                           </h1>
                         </div>
                       </div>

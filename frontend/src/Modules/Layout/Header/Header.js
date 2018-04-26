@@ -13,6 +13,7 @@ export class Header extends React.Component {
         style={{
           position: 'relative !important',
           paddingTop: 30,
+          paddingBottom: 30,
         }}
         data-title="Header"
       >
