@@ -3,25 +3,22 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
-import { configureStore, history } from './Store/ConfigureStore'
-import { Root } from './Root'
-import './styles/styles.scss'
 
-const store = configureStore()
+import './styles/styles.scss'
+import App from './App'
 
 render(
   <AppContainer>
-    <Root store={store} />
+    <App />
   </AppContainer>,
   document.getElementById('root'),
 )
 
 if (module.hot) {
-  module.hot.accept('./Root', () => {
-    const NewRoot = require('./Root').default
+  module.hot.accept('./App', () => {
     render(
       <AppContainer>
-        <NewRoot store={store} history={history} />
+        <App />
       </AppContainer>,
       document.getElementById('root'),
     )
